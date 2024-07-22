@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra-head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+<div style="width:100%; height:300px; background:#DCF8F8; margin:auto;">
+    <h1 class="titulo-centrado" style="color:#546463; padding:120px 0 120px 0;">Alojamientos</h1>
+</div>
+
+<div style="margin: 50px;">
+    <p class="texto">
+    A continuación, te compartimos una relación de los diferentes alojamientos, para que puedas llamar directamente indicando que eres invitado de la boda de Cova y Nico<br>
+    Un aspecto para tener en cuenta es que el día del enlace será el desfile de las Fuerzas Armadas por el paseo de la Castellana por esta razón <strong>te aconsejamos formalizar la reserva cuanto antes, es un día con una alta ocupación hotelera en la capital.</strong> <br>
+
+
+
+    </p>
+</div>
+
+<div style="margin:auto; width:100%;">
+    <h1 class="subtitulo-centrado">
+
+    Hotel Quinta de los Cedros ****
+    </h1>
+     <div style="width:100%; margin:50px 0px 50px 0px;">
+        <p style="text-align:center;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24285.66601352867!2d-3.6836068414871472!3d40.45959382482014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd41885c352d3f7f%3A0xa9c79883e9afb2ed!2sHotel%20Quinta%20de%20Los%20Cedros!5e0!3m2!1ses-419!2ses!4v1720183860078!5m2!1ses-419!2ses" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div>
+
+    <h1 class="subtitulo-centrado">
+
+    Hotel Puerta de América *****
+    </h1>
+    <div style="width:100%; margin:50px 0px 50px 0px;">
+        <p style="text-align:center;"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.562461183274!2d-3.67011040000002!3d40.44068640000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228cf1f0f86a7%3A0x2f7e1d24e27f12e!2sHotel%20Puerta%20Am%C3%A9rica!5e0!3m2!1ses-419!2ses!4v1720183030256!5m2!1ses-419!2ses" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div>
+
+    <h1 class="subtitulo-centrado">
+
+    AC Hotel Avenida de América ***
+    </h1>
+    <div style="width:100%; margin:50px 0px 50px 0px;">
+        <p style="text-align:center;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24293.445578694893!2d-3.6932854415685807!3d40.438068735500316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228c61fb091bb%3A0xfd8a44a445be9596!2sAC%20Hotel%20Avenida%20de%20Am%C3%A9rica!5e0!3m2!1ses-419!2ses!4v1720183947705!5m2!1ses-419!2ses" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </p>
+    </div>
+
+    <h1 class="subtitulo-centrado">
+
+    Hotel Ilunion Suites Madrid ****
+    </h1>
+    <div style="width:100%; margin:50px 0px 50px 0px;">
+        <p style="text-align:center;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24289.910392952555!2d-3.6896151415316085!3d40.447851330646905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228d111f45fab%3A0x3e72595a2e2febd1!2sHotel%20ILUNION%20Suites%20Madrid!5e0!3m2!1ses-419!2ses!4v1720184079365!5m2!1ses-419!2ses" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div>
+
+</div>
+
+
+{% endblock %}

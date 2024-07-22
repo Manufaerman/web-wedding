@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+{% block title %}<title>Cova&Nico</title>{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block extra-head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+
+    <div class="container-total-block" style="">
+         <div class="image-container" style="width:100%; height:100%;">
+
+
+             <div class="image-container" style="width:100%;">
+                 <img src="{% static 'img/fotoprincipal.png' %}" style="width:100%; height:100%; filter: brightness(80%);">
+             </div>
+
+             <div style="position: absolute; bottom:0; width:100%;">
+                 <p class="text" >COVA & NICO</p>
+                <p class="text-mini" style="color:#04C5BA;">12 octubre, 2024</p>
+             </div>
+
+
+        </div>
+
+    </div>
+<!--
+    -->
+    <div class="" style="margin-top:50px"> <!--parent div -->
+        <div class="" style="width:100%; margin:auto;">
+               <p style="text-align:center;"><iframe width="100%" height="315" src="https://www.youtube.com/embed/y8GwH88mnCI?si=PV_jscSmQgTFZX9Q&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+        </div>
+    </div>
+
+
+
+        <div style=" margin-top: 50px;">
+            <hr style=" height: 0.5px; width: 90%; background-color:#04C5BA;  margin:auto;">
+        </div>
+
+        <div style=" height: 400px; width:90%; background:white; margin:50px auto; opacity:1; overflow:auto;">
+            <div class="" style="margin:auto; width:90%;">
+                <div style="width:100%; ">
+                    <h2 class="titulo-centrado" style=" ">¡Bienvenidos!</h2>
+                    <h3 class="subtitulo-centrado" style=" "> ¡Estamos super ilusionados preparando el gran día para poder compartirlo con todos vosotros! </h3>
+                    <p class="texto-centrado">El 12 de Octubre puede parecer aún lejano, no obstante, os dejamos a continuación información para que podáis ir planificandoos.
+
+                Para hacer más llevadera la espera, tenéis a vuestra disposición en esta web datos útiles que os ayudaran a preparar el día de nuestra boda; <a href="#donde" style="color:#04C5BA;">cuándo y dónde será,</a> <a href="{% url 'alojamiento'%}">hoteles</a>, <a href="{% url 'autobuses' %}">autobuses</a>, <a href="#boda">confirmación de asistencia a la boda, alergias, etc.</a>
+                y confirmacion a la <a href="#preboda" style="color:#04C5BA;">Pre-boda</a>
+                    <strong>¡Os esperamos el día 12 de Octubre en Madrid!</strong>
+                    <a href="#deseos" style="color:#04C5BA;"> Mientras tanto puedes dejar tus deseos en nuestro muro</a>
+                Solo faltan…</p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    <div class="linea-central">
+            <hr style="  height: 2px; width: 90%; background-color: #7DDCD6;  margin:auto;">
+    </div>
+
+    <div style= "top:50px; background:#F6F9F9; position:relative; height:500px; width:100%;">
+        <div style="width:50%; position:absolute; top:20%; left:25%; border-color:#7DDCD6;border-width: 5px;border-style: solid; background:black; padding:40px;">
+
+            <h1 class="texto_wedding">
+            Days to the wedding </h1>
+            <h2 style=" margin-top:30px; color:#7DDCD6; text-align:center; font-family: helvetica neue fina; font-size:60px; ">{{time_to_wedding.days}}</h2>
+
+
+        </div>
+
+    </div>
+
+
+    <div style=" margin-top: 100px; margin-bottom: 100px;">
+        <hr style=" height: 2px; width: 90%; background-color: #7DDCD6;  margin:auto;">
+    </div>
+
+     <div style="margin:20px; width: 90%; margin:auto;"></div>
+        <div style="">
+            <h2 class="titulo-centrado" style="">Pre-boda</h2>
+        </div>
+
+        <div style="">
+            <h2 class="subtitulo-centrado" style="">Confirma tu asistencia</h2>
+        </div>
+
+        <div style=" width: 90%; margin:auto;">
+        <div style="align-items:left; margin:auto; background:white; width:90%;">
+            <h2 class="texto-centrado" style="margin: 30px 0 50px 0;">
+                Para calentar motores, ¡te esperamos en nuestra preboda el día 11 de Octubre en <strong>Casa Córdoba</strong>, calle Victor de la Serna nº30. Nos encantaría compartir contigo
+                los momentos previos al gran día!! deja tu huella en nuestra historia ! apuntate en el siguiente formulario!
+            </h2>
+        </div>
+    </div>
+
+    {% if not post %}
+    <div style="background:#F6F9F9;" class="my-form">
+        <form method="post" class="my-class" name="first-input">
+            {% csrf_token %}
+
+            {{ form.guests| as_crispy_field }}
+            {{ form.companions| as_crispy_field }}
+            {{ form.assistance| as_crispy_field }}
+            {{ form.mood| as_crispy_field }}
+
+
+            <input type="submit" value="Submit"name="first-input">
+        </form>
+    </div>
+    {% endif %}
+    {% if post %}
+        <div class="alert alert-success" role="alert" style="width: 90%; margin:auto; text-align:center;">
+              You will rock it !  love u !
+        </div>
+    {% endif %}
+     <div style="">
+            <h2 class="titulo-centrado"  id="boda" style=" margin-top:100px;">Boda!</h2>
+    </div>
+
+    <div style="">
+            <h2 class="subtitulo-centrado" style="">Confirma tu asistencia !</h2>
+    </div>
+
+    <div style=" width: 90%; margin:auto;">
+        <div style="align-items:left; margin:auto; background:white; width:90%;">
+            <h2 class="texto-centrado" style="margin: 20px 0 50px 0;">
+                Sabemos que el 12 de octubre puede parecer lejano, pero tu respuesta nos ayuda a planificarnos con tiempo.
+
+                Te pedimos que antes de agosto nos confirmes la asistencia, rellenando este formulario.
+
+                Coméntanos también si tienes alguna alergia alimentaria y si vas a usar el autobús.
+
+                ¡¡Muchas gracias!! <a href="#deseos" style=""><strong>deja tus deseos en nuestro muro</strong></a></h2>
+
+
+        </div>
+    </div>
+
+    {% if not postdos %}
+    <div class="my-form" style="background:#F6F9F9;" id="">
+        <form method="post" class="my-class" action="second_form_view/">
+            {% csrf_token %}
+
+            {{ formdos.guests | as_crispy_field }}
+            {{ formdos.assistance | as_crispy_field }}
+            {{ formdos.companions| as_crispy_field }}
+            {{ formdos.bus | as_crispy_field }}
+            {{ formdos.about_food | as_crispy_field }}
+            {{ formdos.sugerencia | as_crispy_field }}
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% endif %}
+
+    {% if ancla %}
+        <script>
+             setTimeout(function(){
+            window.location.href = "{% url 'home' %}";
+             }, 5000);
+
+        </script>
+    {% endif %}
+
+    {% if postdos %}
+        <div class="alert alert-success" role="alert" style="width: 90%; margin:auto; text-align:center">
+              You did it fucking great ! i love u !
+        </div>
+    {% endif %}
+
+    <div class="width:100%" style="margin:30xp;">
+        <img src="{% static 'img/finca1.jpg' %}" style="width:100%;">
+    </div>
+
+     <div style=" width:100%; margin-top:30px;">
+        <div style=" margin:100px auto; background:white; width:90%;">
+            <h2  class="titulo-centrado" id="donde" style="">Itinerario</h2>
+            <h2 class="subtitulo-centrado">mas abajo encontrarás toda la información</h2>
+            <p class="texto-centrado"></p>
+        </div>
+    </div>
+
+    <div style="width:100%; margin-top:30px;" id="preboda">
+        <div style="width: 100%; margin:auto;">
+            <div class="">
+              <div class="div_itinerario" style="">
+                <p class="card-text hora" style="">12:00 H</p>
+
+                <div style="margin:auto;text-align:center; margin:10px;">
+                    <img src="{% static 'img/church.png' %}" class="round_image">
+                </div>
+
+                <h2 class="card-title titulo-centrado" style="">Ceremonia Religiosa</h2>
+                <h5 class="card-title subtitulo-centrado" style="">Colegio Fundación Santamarca</h5>
+                <p class="card-text texto-centrado" style="">Calle Mercenado, 50, Madrid</p>
+
+                 <div class="my-button" style="">
+                  <a href="https://maps.app.goo.gl/FjSiLDgFbu9JMYPTA" style="text-decoration:none; color:#28DAD7;"><span>VER EN EL MAPA</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="" style="width 100%: 18rem; margin:auto;">
+              <div class="div_itinerario">
+                <p class="card-text hora" style="">13:30 H</p>
+
+                <div style="margin:auto;text-align:center; margin:10px;">
+                    <img src="{% static 'img/bus.png' %}" class="round_image">
+                </div>
+
+                <h5 class="card-title titulo-centrado" style="">Autobús</h5>
+                <p class="card-text subtitulo-centrado" style="">Hacia la finca</p>
+              </div>
+            </div>
+
+            <div class="" style="">
+              <div class="div_itinerario" style="">
+                <p class="card-text hora" style="">14:30 H</p>
+
+                <div style="margin:auto;text-align:center; margin:10px;">
+                    <img src="{% static 'img/party.png' %}" class="round_image">
+                </div>
+
+                <h2 class="card-title titulo-centrado" style="">La celebración</h2>
+                <h5 class="card-title subtitulo-centrado" style="">FINCA MONTE DE LOS ÁNGELES</h5>
+                <p class="card-text texto-centrado" style="">Av. Comunidad de Madrid, 2, 28850-Torrelodones, Madrid</p>
+
+
+                <div class="my-button" style="">
+                  <a href="https://www.google.com/maps/place/Finca+Monte+de+los+Ángeles/@40.5844201,-3.9619332,14z/data=!3m1!4b1!4m6!3m5!1s0xd4177ce0e33b3f3:0x782ed082f9a2331e!8m2!3d40.5843893!4d-3.9413765!16s%2Fg%2F1tdl2w3m?entry=ttu" style=""><span>VER EN EL MAPA</span></a>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="" style="margin:auto;">
+              <div class="div_itinerario" style="align-items:center;">
+                <p class="card-text hora" style="">23:30 H</p>
+
+                <div style="margin:auto;text-align:center; margin:10px;">
+                    <img src="{% static 'img/bus.png' %}" class="round_image">
+                </div>
+
+                <h5 class="card-title titulo-centrado" style="">Autobús</h5>
+                <p class="card-text subtitulo-centrado" style="">Regreso a Madrid</p>
+              </div>
+            </div>
+
+            <div class="" style="margin:auto;">
+              <div class="div_itinerario" style="align-items:center;">
+                <p class="card-text hora" style="">00:00 H</p>
+
+                <div style="margin:auto;text-align:center; margin:10px;">
+                    <img src="{% static 'img/disco.png' %}" class="round_image">
+                </div>
+
+                <h5 class="card-title titulo-centrado" style="">Discoteca</h5>
+
+              </div>
+            </div>
+
+
+        </div>
+
+    </div>
+     <div style=" width:100%; margin-top:30px;">
+        <div style=" margin:100px auto; background:white; width:90%;">
+            <h2  class="titulo-centrado" style="">Regalo</h2>
+            <h2 class="subtitulo-centrado"><a href="{% url 'regalo' %}">Más información pinchando aquí.</a></h2>
+            <p class="texto-centrado"></p>
+        </div>
+    </div>
+
+
+
+    <div id="map" style="margin-top:20px;"></div>
+
+     <div>
+            <h2 class="titulo-centrado" style=" margin-top:100px;">Deseos!</h2>
+    </div>
+
+    <div >
+            <h2 class="subtitulo-centrado" style="">Inmortaliza tus deseos en este mural!</h2>
+    </div>
+
+    <div style=" width: 90%; margin:auto;">
+        <div style="align-items:left; margin:auto; background:white; width:90%;">
+            <h2 class="texto-centrado" style="margin: 50px 0 50px 0;">
+                No se cobra por la longitud del texto, asi que ya sabes !<br> explayate !</h2>
+        </div>
+    </div>
+    {% if not ancla %}
+    <div style="margin:50px auto 50px; "class="my-form">
+        <form method="post" class="my-class" name="first-input">
+            {% csrf_token %}
+
+            {{ formtres.guests| as_crispy_field }}
+            {{ formtres.wish| as_crispy_field }}
+
+
+
+            <input type="submit" value="Submit"name="first-input">
+        </form>
+    </div>
+    {% else %}
+        <div class="alert alert-success" role="alert" style="width: 90%; margin: auto s; text-align:center">
+              You did it fucking great ! i love u !
+        </div>
+    {% endif %}
+
+    <div class="row " style="width:100%; align-items:center; background:#F6F9F9; padding:10px; margin-bottom:50px;">
+        <div style="text-align:center;">
+            <h2 class="titulo-centrado" style=" margin-top:100px;"></h2>
+
+            <img src="{% static 'img/love.png' %}" style="margin-bottom:100px;">
+
+        </div>
+
+        {% for wish in wishes %}
+            <div class="card" style="width: 12rem; margin:50px auto 50px; border-radius:30px;box-shadow: 1px 1px 3px #F1F1EF  ;">
+              <div class="card-body">
+                  <div style="width:5px; height:5px; border-radius:50px; background:black; margin:auto;">
+
+                  </div>
+
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title"><strong>{{wish.guests}}</strong></h5>
+                <p class="card-text texto"id="deseos">{{wish.wish}}</p>
+              </div>
+            </div>
+        {% endfor%}
+
+    </div>
+<script>
+    var LeafIcon = L.Icon.extend({
+    options: {
+        shadowUrl: '{% static 'img/leaf-shadow.png' %}',
+        iconSize:     [38, 95],
+        shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+    }
+    });
+
+    var greenIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-red.png' %}'}),
+    redIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-green.png' %}'}),
+    orangeIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-orange.png' %}'});
+
+    var map = L.map('map').setView([40.5000000,-3.6010800], 10);
+    L.icon = function (options) {
+    return new L.Icon(options);
+    };
+
+    L.marker([40.4496216, -3.6765005], {icon: greenIcon}).addTo(map).bindPopup("Colegio Fundación Santamarca, calle Mercenado, 50, Madrid");
+    L.marker([40.5843636, -3.9453039], {icon: redIcon}).addTo(map).bindPopup("Finca Monte De los Angeles, Av. Comunidad de Madrid, 2 - 28850 Torrelodones Madrid");
+    L.marker([51.49, -0.1], {icon: orangeIcon}).addTo(map).bindPopup("I am an orange leaf.");
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    classname:'leaflet-tile-pane'
+    }).addTo(map);
+
+
+    <!-- mantiene la posicion de scrol cuando recagas la pagina-->
+     document.addEventListener("DOMContentLoaded", function(event) {
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+
+</script>
+
+</body>
+{% endblock %}
+
+
+
+{% block script %}
+
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script src="{% static 'js/app.js' %}"></script>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+
+{% endblock %}
