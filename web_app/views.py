@@ -52,10 +52,7 @@ def dashboard(request):
         passengers += 1
         if passenger.companions:
             passengers += passenger.companions
-    print(number_passengers_bus)
-    print(passengers, 'pasajeros')
-    print(number_companions_preboda['companions__sum'])
-    print(number_companions_boda['companions__sum'])
+
 
 
 
@@ -120,8 +117,7 @@ def home(request, **kwargs):
                                                                             })
 
     if request.method == 'POST':
-        print(request.POST)
-        print(kwargs)
+
         if 'mood' in request.POST:
             post = 'post'
             form = PreBoda_Form(request.POST)
