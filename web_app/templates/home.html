@@ -347,7 +347,7 @@
 <script>
     var LeafIcon = L.Icon.extend({
     options: {
-        shadowUrl: '{% static 'img/leaf-shadow.png' %}',
+        shadowUrl: '',
         iconSize:     [38, 95],
         shadowSize:   [50, 64],
         iconAnchor:   [22, 94],
@@ -356,9 +356,9 @@
     }
     });
 
-    var greenIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-red.png' %}'}),
-    redIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-green.png' %}'}),
-    orangeIcon = new LeafIcon({iconUrl: '{% static 'img/leaf-orange.png' %}'});
+    var greenIcon = new LeafIcon({iconUrl: ''}),
+    redIcon = new LeafIcon({iconUrl: ''}),
+    orangeIcon = new LeafIcon({iconUrl: ''});
 
     var map = L.map('map').setView([40.5000000,-3.6010800], 10);
     L.icon = function (options) {
