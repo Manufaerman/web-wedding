@@ -24,9 +24,7 @@ AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_ADDRESSING_STYLE = "virtual"
 
 STATICFILES_DIRS = (
-
     os.path.join(BASE_DIR, "static"),
-
 
                     )
 STATIC_URL = AWS_URL + 'static/'
