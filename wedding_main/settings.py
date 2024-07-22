@@ -31,7 +31,7 @@ DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-z(qtjrh4xj91kn6g8%hfqq%84cu_62f*d*ijurb3cm0z58*0$4')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'murmuring-coast-85285-408558754929.herokuapp.com']
 
 if config('DJANGO_PRODUCTION_ENV', default=False, cast=bool):
     from .settings_production import *
