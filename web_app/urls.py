@@ -5,7 +5,6 @@ from .views import home, dashboard, regalo_boda, alojamiento, user_login, user_l
 
 urlpatterns = [
     path('', home, name='home'),
-    path('homenew', homenew, name='homenew'),
     path('dashboard/', dashboard, name='dashboard'),
     path('regalo/', regalo_boda, name='regalo'),
     path('autobuses/', autobuses, name='autobuses'),
