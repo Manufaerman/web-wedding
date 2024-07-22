@@ -155,7 +155,7 @@ AWS_S3_ADDRESSING_STYLE = "virtual"
 STATICFILES_DIRS = (
 
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "media"),
+
 
                     )
 STATIC_URL = AWS_URL + 'static/'
