@@ -146,7 +146,6 @@ load_dotenv()
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-print(AWS_ACCESS_KEY_ID, AWS_STORAGE_BUCKET_NAME, AWS_SECRET_ACCESS_KEY)
 AWS_URL = 'https://weddin-page-bucket.s3.eu-north-1.amazonaws.com/'
 
 AWS_DEFAULT_ACL = None
