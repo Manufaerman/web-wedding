@@ -2,6 +2,7 @@
 {% block title %}<title>Cova&Nico</title>{% endblock %}
 {% load static %}
 {% load crispy_forms_tags %}
+
 {% block extra-head %}
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -83,7 +84,6 @@
         </div>
 
     </div>
-
 
     <div style=" margin-top: 100px; margin-bottom: 100px;">
         <hr style=" height: 2px; width: 90%; background-color: #7DDCD6;  margin:auto;">
@@ -377,7 +377,7 @@
     }).addTo(map);
 
 
-    <!-- mantiene la posicion de scrol cuando recagas la pagina--><!--
+    <!-- mantiene la posicion de scrol cuando recagas la pagina-->
      document.addEventListener("DOMContentLoaded", function(event) {
             var scrollpos = localStorage.getItem('scrollpos');
             if (scrollpos) window.scrollTo(0, scrollpos);

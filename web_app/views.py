@@ -186,3 +186,71 @@ def second_form_view(request):
                                             'red': Imagenes.objects.get(name='red'),})
         else:
             return HttpResponse('the second form is not valid')
+
+def homenew(request, **kwargs):
+    form = PreBoda_Form()
+    formdos = Assistance_Form()
+    formtres = Wish_Form()
+    today = datetime.now()
+    wishes = WishForm.objects.all()
+    wedding_date_ = '20241012 12:00:00'
+    wedding_date = datetime.strptime(wedding_date_, '%Y%m%d %H:%M:%S')
+    time_to_wedding = wedding_date - today
+    if request.method == 'GET':
+        return render(request, 'home.html', {
+                                             'time_to_wedding': time_to_wedding,
+                                             'form': form, 'formdos': formdos,
+                                             'formtres': formtres,
+                                             'wishes': wishes,
+                                              'fotoprincipal':Imagenes.objects.get(name='fotoprincipal'),
+                                              'finca': Imagenes.objects.get(name='finca'),
+                                              'church': Imagenes.objects.get(name='church'),
+                                              'bus': Imagenes.objects.get(name='bus'),
+                                              'party': Imagenes.objects.get(name='party'),
+                                              'disco': Imagenes.objects.get(name='disco'),
+                                              'love': Imagenes.objects.get(name='love'),
+                                            'green': Imagenes.objects.get(name='green'),
+                                            'orange': Imagenes.objects.get(name='orange'),
+                                            'red': Imagenes.objects.get(name='red'),
+                                                                            })
+
+    if request.method == 'POST':
+
+        if 'mood' in request.POST:
+            post = 'post'
+            form = PreBoda_Form(request.POST)
+            formdos = Assistance_Form(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.save()
+
+                return render(request, 'home.html', {'time_to_wedding': time_to_wedding, 'post': post, 'formdos':formdos, 'form': form, 'formtres': formtres,'fotoprincipal':Imagenes.objects.get(name='fotoprincipal'),
+                                              'finca': Imagenes.objects.get(name='finca'),
+                                              'church': Imagenes.objects.get(name='church'),
+                                              'bus': Imagenes.objects.get(name='bus'),
+                                              'party': Imagenes.objects.get(name='party'),
+                                              'disco': Imagenes.objects.get(name='disco'),
+                                              'love': Imagenes.objects.get(name='love'),
+                                            'green': Imagenes.objects.get(name='green'),
+                                            'orange': Imagenes.objects.get(name='orange'),
+                                            'red': Imagenes.objects.get(name='red'),})
+            else:
+                return HttpResponse('the first form is not valid')
+
+
+        else:
+            formtres = Wish_Form(request.POST)
+            if formtres.is_valid():
+                instance = formtres.save(commit=False)
+                instance.save()
+                ancla = 'ancla'
+                return render(request, 'home.html', {'time_to_wedding': time_to_wedding, 'form': form, 'formdos':formdos, 'formtres': formtres, 'ancla': ancla,'fotoprincipal':Imagenes.objects.get(name='fotoprincipal'),
+                                              'finca': Imagenes.objects.get(name='finca'),
+                                              'church': Imagenes.objects.get(name='church'),
+                                              'bus': Imagenes.objects.get(name='bus'),
+                                              'party': Imagenes.objects.get(name='party'),
+                                              'disco': Imagenes.objects.get(name='disco'),
+                                              'love': Imagenes.objects.get(name='love'),
+                                            'green': Imagenes.objects.get(name='green'),
+                                            'orange': Imagenes.objects.get(name='orange'),
+                                            'red': Imagenes.objects.get(name='red'),})
