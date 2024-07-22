@@ -32,6 +32,7 @@ DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-z(qtjrh4xj91kn6g8%hfqq%84cu_62f*d*ijurb3cm0z58*0$4')
 
 ALLOWED_HOSTS = ['*']
+
 if config('DJANGO_PRODUCTION_ENV', default=False, cast=bool):
     from .settings_production import *
 
