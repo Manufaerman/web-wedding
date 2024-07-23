@@ -57,21 +57,31 @@ def dashboard(request):
 
 
     if number_companions_boda['companions__sum'] is None:
-        number_of_guests_preboda = number_companions_preboda['companions__sum'] + len(pre_boda)
-        number_of_guests_boda = len(guests)
+        number_of_companions_preboda = number_companions_preboda['companions__sum']
+        number_principal_guest_preboda = PreBodaForm.objects.filter(assistance=1)
+        number_of_guests_preboda = number_of_companions_preboda + number_principal_guest_preboda
+        number_of_guests_boda = len(AssistanceForm.objects.filter(assistance=1))
         return render(request, 'dashboard.html',
                               {'guests': guests, 'pre_boda': pre_boda, 'number_of_guests_preboda': number_of_guests_preboda,
                                'number_of_guests_boda': number_of_guests_boda, 'passengers':passengers})
 
     elif number_companions_preboda['companions__sum'] is None:
-        number_of_guests_boda = number_companions_boda['companions__sum'] + len(guests)
-        number_of_guests_preboda = len(pre_boda)
+        number_of_guests_boda = number_companions_boda['companions__sum']
+        number_principal_guest_boda = AssistanceForm.objects.filter(assistance=1)
+        number_of_guests_boda = number_principal_guest_boda + number_of_guests_boda
+        number_of_guests_preboda = len(PreBodaForm.objects.filter(assistance=1))
         return render(request, 'dashboard.html',
                               {'guests': guests, 'pre_boda': pre_boda, 'number_of_guests_preboda': number_of_guests_preboda,
                                'number_of_guests_boda': number_of_guests_boda, 'passengers':passengers})
 
-    number_of_guests_preboda = number_companions_preboda['companions__sum'] + len(pre_boda)
-    number_of_guests_boda = number_companions_boda['companions__sum'] + len(guests)
+
+    number_of_companions_preboda = number_companions_preboda['companions__sum']
+    number_principal_guest_preboda = PreBodaForm.objects.filter(assistance=1)
+    number_of_guests_preboda = number_of_companions_preboda + len(number_principal_guest_preboda)
+
+    number_of_guests_boda = number_companions_boda['companions__sum']
+    number_principal_guest_boda = AssistanceForm.objects.filter(assistance=1)
+    number_of_guests_boda = len(number_principal_guest_boda) + number_of_guests_boda
     return render(request, 'dashboard.html',
                       {'guests': guests, 'pre_boda': pre_boda, 'number_of_guests_preboda': number_of_guests_preboda,
                        'number_of_guests_boda': number_of_guests_boda, 'passengers':passengers})
