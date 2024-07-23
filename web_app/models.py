@@ -12,7 +12,7 @@ class AssistanceForm(models.Model):
     FOOD_CHOICES = [('1', 'Si, intolerancia al gluten'), ('2', 'Si, soy vegano'), ('3', 'si, soy vevetariano'),
                     ('4', 'Otro, indicanoslo en el siguiente campo'), ('5', 'No, ninguna')]
 
-    assistance = models.CharField(choices=ASSISTANCE_CHOICES, max_length=500)
+    assistance = models.CharField(choices=ASSISTANCE_CHOICES, max_length=500, default='1')
     guests = models.CharField(max_length=200)
     companions = models.IntegerField(null=True, default=0)
     bus = models.CharField(choices=BUS_CHOICES, max_length=500, default='2')
@@ -26,10 +26,11 @@ class PreBodaForm(models.Model):
                     ('4', 'Si la vida te da limones, pide sal y tequila'),
                     ('5', 'Es que mi abuela fuma y ...'),
                     ('6', 'Un bidon de gasolina por favor !')]
-    assistance = models.CharField(choices=ASSISTANCE_CHOICES, max_length=500)
+
+    assistance = models.CharField(choices=ASSISTANCE_CHOICES, max_length=500, default='1')
     guests = models.CharField(max_length=200)
-    companions = models.IntegerField()
-    mood = models.CharField(max_length=500, choices=MOOD_CHOICES)
+    companions = models.IntegerField(default=0)
+    mood = models.CharField(max_length=500, choices=MOOD_CHOICES, default='5')
 
 
 class WishForm(models.Model):
