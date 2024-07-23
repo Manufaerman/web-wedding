@@ -4,7 +4,7 @@ from .models import WeedingPage
 from django.db.models import Sum
 from datetime import datetime, timedelta
 from .forms import Assistance_Form, PreBoda_Form
-from .models import AssistanceForm, PreBodaForm, WishForm, Imagenes
+from .models import AssistanceForm, PreBodaForm, WishForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignupForm, LoginForm, Wish_Form
 

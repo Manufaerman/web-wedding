@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, dashboard, regalo_boda, alojamiento, user_login, user_logout, user_signup, second_form_view, autobuses, homenew
+from .views import home, dashboard, regalo_boda, alojamiento, user_login, user_logout, user_signup, second_form_view,autobuses
 
 
 
