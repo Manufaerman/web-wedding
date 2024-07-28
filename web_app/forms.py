@@ -8,7 +8,7 @@ from .models import AssistanceForm, PreBodaForm, WishForm
 class Assistance_Form(ModelForm):
     class Meta:
         model = AssistanceForm
-        fields = {'assistance', 'guests','companions', 'bus', 'about_food', 'sugerencia'}
+        fields = {'assistance', 'guests', 'companions', 'bus', 'about_food', 'sugerencia'}
         field_classes = {
             'assistance': CheckboxSelectMultiple,
             'bus': CheckboxSelectMultiple,

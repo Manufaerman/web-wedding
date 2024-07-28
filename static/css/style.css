@@ -309,7 +309,7 @@ a:active {
     font-family: helvetica neue;
     line-height:30px ;
     letter-spacing: 3px;
-    font-size: 10px;
+    font-size: 20px;
   }
 .nav-title {
     font-family: Times;
@@ -364,6 +364,12 @@ item-navegacion {
     border-top: 1px solid #04C5BA;
     height:50px;
 }
-
+.titulo-centrado {
+    font-family: times;
+    font-size: 10vw;
+    letter-spacing: 1px;
+    color:black;
+    text-align:center;
+}
 
 }

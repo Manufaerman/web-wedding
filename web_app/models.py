@@ -7,9 +7,9 @@ class WeedingPage(models.Model):
 
 class AssistanceForm(models.Model):
     ASSISTANCE_CHOICES = [('1', 'Si asistiré/asistiremos'), ('2', 'No, lamentableente no puedo asistir')]
-    BUS_CHOICES = [('1', 'Si, necesitamos transporte'), ('2', 'No, usaremos el propio'), ('3', 'Si, solo ida'),
+    BUS_CHOICES = [('1', 'Si, ida y vuelta'), ('2', 'No, usaremos el propio'),
                    ('4', 'Si, solo vuelta')]
-    FOOD_CHOICES = [('1', 'Si, intolerancia al gluten'), ('2', 'Si, soy vegano'), ('3', 'si, soy vevetariano'),
+    FOOD_CHOICES = [('1', 'Si, intolerancia al gluten'), ('2', 'Si, soy vegano'), ('3', 'si, soy vegetariano'),
                     ('4', 'Otro, indicanoslo en el siguiente campo'), ('5', 'No, ninguna')]
 
     assistance = models.CharField(choices=ASSISTANCE_CHOICES, max_length=500, default='1')
