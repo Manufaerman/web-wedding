@@ -11,6 +11,8 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+SECURE_SSL_REDIRECT = False
+
 
 #AMAZON AWS DATABASE FOR STATICFILES
 
